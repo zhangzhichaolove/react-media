@@ -4,7 +4,7 @@ Full-featured video player component with keyboard shortcuts, Picture-in-Picture
 
 ## Live Demo
 
-<VideoPlayerDemo />
+<demo react="../../demos/VideoPlayerDemo.tsx" />
 
 ## Basic Usage
 

@@ -4,7 +4,7 @@ Beautiful audio player component with album cover, progress bar, and volume cont
 
 ## Live Demo
 
-<AudioPlayerDemo />
+<demo react="../../demos/AudioPlayerDemo.tsx" />
 
 ## Basic Usage
 

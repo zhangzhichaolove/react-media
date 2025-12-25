@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import react from '@vitejs/plugin-react'
+import { vitepressDemoPlugin } from 'vitepress-demo-plugin'
 
 export default defineConfig({
   title: 'React Media',
@@ -7,9 +7,14 @@ export default defineConfig({
   base: '/react-media/',
 
   vite: {
-    plugins: [react()],
     ssr: {
       noExternal: ['@peakchao/react-media']
+    }
+  },
+
+  markdown: {
+    config(md) {
+      md.use(vitepressDemoPlugin)
     }
   },
   

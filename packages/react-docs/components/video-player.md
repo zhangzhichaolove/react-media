@@ -4,7 +4,7 @@
 
 ## 在线演示
 
-<VideoPlayerDemo />
+<demo react="../demos/VideoPlayerDemo.tsx" />
 
 ## 基础用法
 
