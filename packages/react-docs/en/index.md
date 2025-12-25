@@ -17,7 +17,7 @@ hero:
       link: /en/components/video-player
     - theme: alt
       text: GitHub
-      link: https://github.com/zhangzhichaolove/vue3-media
+      link: https://github.com/zhangzhichaolove/react-media
 
 features:
   - icon: 🎥

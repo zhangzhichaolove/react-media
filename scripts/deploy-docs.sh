@@ -13,7 +13,7 @@ NC='\033[0m' # No Color
 echo -e "${YELLOW}📦 开始构建文档...${NC}"
 
 # 进入 docs 目录并构建
-cd packages/docs
+cd packages/react-docs
 pnpm build
 
 echo -e "${GREEN}✅ 文档构建完成${NC}"
@@ -30,10 +30,10 @@ git commit -m "docs: deploy documentation $(date '+%Y-%m-%d %H:%M:%S')"
 
 # 推送到 gh-pages 分支
 # 使用 --force 因为我们每次都是全新的提交
-git push -f https://github.com/zhangzhichaolove/vue3-media.git main:gh-pages
+git push -f https://github.com/zhangzhichaolove/react-media.git main:gh-pages
 
 echo -e "${GREEN}✅ 文档部署成功！${NC}"
-echo -e "${GREEN}🌐 访问地址: https://zhangzhichaolove.github.io/vue3-media/${NC}"
+echo -e "${GREEN}🌐 访问地址: https://zhangzhichaolove.github.io/react-media/${NC}"
 
 # 返回项目根目录
-cd ../../../..
+cd ../../../../..

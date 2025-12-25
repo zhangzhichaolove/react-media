@@ -1,15 +1,15 @@
-# Vue3 Media 🎬
+# React Media 🎬
 
-[![npm version](https://img.shields.io/npm/v/@peakchao/vue3-media.svg)](https://www.npmjs.com/package/@peakchao/vue3-media)
-[![Vue 3](https://img.shields.io/badge/Vue-3.x-brightgreen.svg)](https://vuejs.org/)
+[![npm version](https://img.shields.io/npm/v/@peakchao/react-media.svg)](https://www.npmjs.com/package/@peakchao/react-media)
+[![React](https://img.shields.io/badge/React-18.x%20%7C%2019.x-brightgreen.svg)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 [中文](./README.zh-CN.md) | English
 
-A beautiful, feature-rich media player component library for Vue 3. Includes customizable Video and Audio players with modern UI, dark mode support, and full TypeScript integration.
+A beautiful, feature-rich media player component library for React. Includes customizable Video and Audio players with modern UI, dark mode support, and full TypeScript integration.
 
-📚 **[Documentation](https://zhangzhichaolove.github.io/vue3-media/en/)**
+📚 **[Documentation](https://zhangzhichaolove.github.io/react-media/en/)**
 
 ## 📷 Preview
 
@@ -37,58 +37,48 @@ A beautiful, feature-rich media player component library for Vue 3. Includes cus
 
 ```bash
 # npm
-npm install @peakchao/vue3-media
+npm install @peakchao/react-media
 
 # yarn
-yarn add @peakchao/vue3-media
+yarn add @peakchao/react-media
 
 # pnpm
-pnpm add @peakchao/vue3-media
+pnpm add @peakchao/react-media
 ```
 
 ## 🚀 Quick Start
 
 ### Import Styles
 
-```ts
-// main.ts
-import '@peakchao/vue3-media/style'
+```tsx
+// App.tsx or index.tsx
+import '@peakchao/react-media/style'
 ```
 
 ### Use Components
 
-```vue
-<script setup>
-import { VideoPlayer, AudioPlayer } from '@peakchao/vue3-media'
-</script>
+```tsx
+import { VideoPlayer, AudioPlayer } from '@peakchao/react-media'
 
-<template>
-  <!-- Video Player -->
-  <VideoPlayer
-    src="https://example.com/video.mp4"
-    poster="https://example.com/poster.jpg"
-  />
+function App() {
+  return (
+    <>
+      {/* Video Player */}
+      <VideoPlayer
+        src="https://example.com/video.mp4"
+        poster="https://example.com/poster.jpg"
+      />
 
-  <!-- Audio Player -->
-  <AudioPlayer
-    src="https://example.com/audio.mp3"
-    title="Song Title"
-    artist="Artist Name"
-    cover="https://example.com/cover.jpg"
-  />
-</template>
-```
-
-### Global Registration (Optional)
-
-```ts
-import { createApp } from 'vue'
-import Vue3Media from '@peakchao/vue3-media'
-import '@peakchao/vue3-media/style'
-
-const app = createApp(App)
-app.use(Vue3Media)
-app.mount('#app')
+      {/* Audio Player */}
+      <AudioPlayer
+        src="https://example.com/audio.mp3"
+        title="Song Title"
+        artist="Artist Name"
+        cover="https://example.com/cover.jpg"
+      />
+    </>
+  )
+}
 ```
 
 ## 📹 VideoPlayer
@@ -122,21 +112,13 @@ A modern video player with all the controls you need.
 | `M` | Mute/Unmute |
 | `F` | Toggle Fullscreen |
 
-### Slots
+### Children (Custom Controls)
 
-| Slot | Description |
-|------|-------------|
-| `controls-left` | Add custom buttons to the left control area |
-| `controls` | Add custom buttons after speed/PiP buttons |
-
-```vue
+```tsx
 <VideoPlayer src="video.mp4">
-  <template #controls-left>
-    <button class="vm-btn">Download</button>
-  </template>
-  <template #controls>
-    <button class="vm-btn">Share</button>
-  </template>
+  {/* Custom controls can be added as children */}
+  <button className="rm-btn">Download</button>
+  <button className="rm-btn">Share</button>
 </VideoPlayer>
 ```
 
@@ -157,15 +139,41 @@ An elegant audio player with cover art and track info display.
 
 ## 🎨 Theming
 
-```vue
-<template>
-  <!-- Custom theme with dark mode -->
-  <VideoPlayer
-    src="video.mp4"
-    primaryColor="#8b5cf6"
-    :darkMode="true"
-  />
-</template>
+```tsx
+function App() {
+  return (
+    <>
+      {/* Custom theme with dark mode */}
+      <VideoPlayer
+        src="video.mp4"
+        primaryColor="#8b5cf6"
+        darkMode={true}
+      />
+    </>
+  )
+}
+```
+
+## 🪝 Hooks
+
+### useMediaControl
+
+A custom hook for controlling media playback programmatically.
+
+```tsx
+import { useMediaControl } from '@peakchao/react-media'
+
+function App() {
+  const { ref, play, pause, toggle, seek, setVolume } = useMediaControl()
+
+  return (
+    <>
+      <VideoPlayer ref={ref} src="video.mp4" />
+      <button onClick={play}>Play</button>
+      <button onClick={pause}>Pause</button>
+    </>
+  )
+}
 ```
 
 ## 📄 License

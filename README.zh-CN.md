@@ -1,15 +1,15 @@
-# Vue3 Media 🎬
+# React Media 🎬
 
-[![npm version](https://img.shields.io/npm/v/@peakchao/vue3-media.svg)](https://www.npmjs.com/package/@peakchao/vue3-media)
-[![Vue 3](https://img.shields.io/badge/Vue-3.x-brightgreen.svg)](https://vuejs.org/)
+[![npm version](https://img.shields.io/npm/v/@peakchao/react-media.svg)](https://www.npmjs.com/package/@peakchao/react-media)
+[![React](https://img.shields.io/badge/React-18.x%20%7C%2019.x-brightgreen.svg)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 中文 | [English](./README.md)
 
-一个美观、功能丰富的 Vue 3 媒体播放器组件库。包含可定制的视频和音频播放器，支持现代 UI、深色模式和完整的 TypeScript 类型。
+一个美观、功能丰富的 React 媒体播放器组件库。包含可定制的视频和音频播放器，支持现代 UI、深色模式和完整的 TypeScript 类型。
 
-📚 **[在线文档](https://zhangzhichaolove.github.io/vue3-media/)**
+📚 **[在线文档](https://zhangzhichaolove.github.io/react-media/)**
 
 ## 📷 预览
 
@@ -37,58 +37,48 @@
 
 ```bash
 # npm
-npm install @peakchao/vue3-media
+npm install @peakchao/react-media
 
 # yarn
-yarn add @peakchao/vue3-media
+yarn add @peakchao/react-media
 
 # pnpm
-pnpm add @peakchao/vue3-media
+pnpm add @peakchao/react-media
 ```
 
 ## 🚀 快速开始
 
 ### 引入样式
 
-```ts
-// main.ts
-import '@peakchao/vue3-media/style'
+```tsx
+// App.tsx 或 index.tsx
+import '@peakchao/react-media/style'
 ```
 
 ### 使用组件
 
-```vue
-<script setup>
-import { VideoPlayer, AudioPlayer } from '@peakchao/vue3-media'
-</script>
+```tsx
+import { VideoPlayer, AudioPlayer } from '@peakchao/react-media'
 
-<template>
-  <!-- 视频播放器 -->
-  <VideoPlayer
-    src="https://example.com/video.mp4"
-    poster="https://example.com/poster.jpg"
-  />
+function App() {
+  return (
+    <>
+      {/* 视频播放器 */}
+      <VideoPlayer
+        src="https://example.com/video.mp4"
+        poster="https://example.com/poster.jpg"
+      />
 
-  <!-- 音频播放器 -->
-  <AudioPlayer
-    src="https://example.com/audio.mp3"
-    title="歌曲名称"
-    artist="歌手"
-    cover="https://example.com/cover.jpg"
-  />
-</template>
-```
-
-### 全局注册（可选）
-
-```ts
-import { createApp } from 'vue'
-import Vue3Media from '@peakchao/vue3-media'
-import '@peakchao/vue3-media/style'
-
-const app = createApp(App)
-app.use(Vue3Media)
-app.mount('#app')
+      {/* 音频播放器 */}
+      <AudioPlayer
+        src="https://example.com/audio.mp3"
+        title="歌曲名称"
+        artist="歌手"
+        cover="https://example.com/cover.jpg"
+      />
+    </>
+  )
+}
 ```
 
 ## 📹 VideoPlayer 视频播放器
@@ -122,21 +112,13 @@ app.mount('#app')
 | `M` | 静音/取消静音 |
 | `F` | 全屏/退出全屏 |
 
-### 插槽 (Slots)
+### 子组件（自定义控件）
 
-| 插槽名 | 描述 |
-|--------|------|
-| `controls-left` | 在左侧控制区添加自定义按钮 |
-| `controls` | 在倍速/画中画按钮后添加自定义按钮 |
-
-```vue
+```tsx
 <VideoPlayer src="video.mp4">
-  <template #controls-left>
-    <button class="vm-btn">下载</button>
-  </template>
-  <template #controls>
-    <button class="vm-btn">分享</button>
-  </template>
+  {/* 可以通过 children 添加自定义控件 */}
+  <button className="rm-btn">下载</button>
+  <button className="rm-btn">分享</button>
 </VideoPlayer>
 ```
 
@@ -157,15 +139,41 @@ app.mount('#app')
 
 ## 🎨 主题定制
 
-```vue
-<template>
-  <!-- 自定义主题色和深色模式 -->
-  <VideoPlayer
-    src="video.mp4"
-    primaryColor="#8b5cf6"
-    :darkMode="true"
-  />
-</template>
+```tsx
+function App() {
+  return (
+    <>
+      {/* 自定义主题色和深色模式 */}
+      <VideoPlayer
+        src="video.mp4"
+        primaryColor="#8b5cf6"
+        darkMode={true}
+      />
+    </>
+  )
+}
+```
+
+## 🪝 Hooks
+
+### useMediaControl
+
+用于编程式控制媒体播放的自定义 Hook。
+
+```tsx
+import { useMediaControl } from '@peakchao/react-media'
+
+function App() {
+  const { ref, play, pause, toggle, seek, setVolume } = useMediaControl()
+
+  return (
+    <>
+      <VideoPlayer ref={ref} src="video.mp4" />
+      <button onClick={play}>播放</button>
+      <button onClick={pause}>暂停</button>
+    </>
+  )
+}
 ```
 
 ## 📄 许可证

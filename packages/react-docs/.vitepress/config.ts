@@ -124,7 +124,7 @@ export default defineConfig({
     logo: '/logo.svg',
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/zhangzhichaolove/vue3-media' },
+      { icon: 'github', link: 'https://github.com/zhangzhichaolove/react-media' },
       { icon: 'npm', link: 'https://www.npmjs.com/package/@peakchao/react-media' }
     ],
 
