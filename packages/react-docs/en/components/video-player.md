@@ -2,6 +2,10 @@
 
 Full-featured video player component with keyboard shortcuts, Picture-in-Picture, mini player and more.
 
+## Live Demo
+
+<VideoPlayerDemo />
+
 ## Basic Usage
 
 ```tsx

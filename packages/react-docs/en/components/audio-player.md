@@ -2,6 +2,10 @@
 
 Beautiful audio player component with album cover, progress bar, and volume control.
 
+## Live Demo
+
+<AudioPlayerDemo />
+
 ## Basic Usage
 
 ```tsx

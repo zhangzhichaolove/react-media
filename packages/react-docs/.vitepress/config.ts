@@ -1,9 +1,17 @@
 import { defineConfig } from 'vitepress'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   title: 'React Media',
   description: '🎬 A beautiful React media player component library',
   base: '/react-media/',
+
+  vite: {
+    plugins: [react()],
+    ssr: {
+      noExternal: ['@peakchao/react-media']
+    }
+  },
   
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/react-media/logo.svg' }],
